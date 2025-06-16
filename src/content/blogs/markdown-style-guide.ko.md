@@ -13,27 +13,21 @@ Astro에서 마크다운 콘텐츠를 작성할 때 사용할 수 있는 기본 
 다음 HTML `<h2>`—`<h6>` 요소들은 5단계의 섹션 제목을 나타냅니다. blog 내에서 `<h2>`이 가장 높은 섹션 레벨이고 `<h6>`이 가장 낮은 레벨입니다.
 h1은 blog 제목에 들어가기 때문에 배제했습니다.
 
-## H2
+## 제목(Heading) 2
 
-### H3
+### 제목(Heading) 3
 
-#### H4
+#### 제목(Heading) 4
 
-##### H5
+##### 제목(Heading) 5
 
-###### H6
+###### 제목(Heading) 6
 
 ## 단락 (Paragraph)
 
-Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut
-dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna
-tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem
-aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos
-nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores
-editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
+이것은 한글 더미 텍스트입니다. 다양한 문장과 단어들이 섞여 있으며, 실제 내용과는 무관합니다. 블로그 스타일 가이드의 마크다운 렌더링을 테스트하기 위해 사용되는 예시 문장입니다. 여러 줄에 걸쳐서 문단이 이어지며, 문단 간의 마진이나 스타일이 어떻게 적용되는지 확인할 수 있습니다. 실제 글에서는 이 부분에 본문 내용이 들어가게 됩니다. 테스트를 위해 임의로 작성된 문장들이며, 반복적으로 사용해도 무방합니다. 이렇게 여러 문장이 이어지면 실제 포스트와 유사한 레이아웃을 확인할 수 있습니다.
 
-Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que
-aut hariosam ex eat.
+이 문단은 두 번째 단락입니다. 여기서도 마찬가지로 한글로 작성된 더미 텍스트가 들어갑니다. 문단 간의 간격, 줄바꿈, 스타일 등을 확인하는 데 도움이 됩니다.
 
 ## 이미지 (Images)
 
@@ -45,7 +39,7 @@ aut hariosam ex eat.
 
 ### 출력 (Output)
 
-![blog placeholder](/images/logo.png)
+![blog placeholder](/blog-placeholder-about.jpg)
 
 ## 인용구 (Blockquotes)
 

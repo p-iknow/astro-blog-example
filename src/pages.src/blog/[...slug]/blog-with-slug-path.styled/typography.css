@@ -52,6 +52,10 @@
   @apply mb-5 text-lg leading-[1.75];
 }
 
+.blog-content p + p {
+  @apply -mt-3;
+}
+
 .blog-content hr {
   @apply border-surface my-5;
 }

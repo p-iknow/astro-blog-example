@@ -45,7 +45,7 @@ aut hariosam ex eat.
 
 ### Output
 
-![blog placeholder](/images/logo.png)
+![blog placeholder](/blog-placeholder-about.jpg)
 
 ## Blockquotes
 
