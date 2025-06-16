@@ -53,6 +53,8 @@
   },
   "dependencies": {
     "@expressive-code/plugin-line-numbers": "^0.41.2",
+    "@r4ai/remark-callout": "^0.6.2",
+    "@shikijs/transformers": "^3.6.0",
     "@xt0rted/expressive-code-file-icons": "^1.0.0",
     "astro-expressive-code": "^0.41.2",
     "clsx": "^2.1.1",
