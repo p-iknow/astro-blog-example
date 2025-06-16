@@ -1,0 +1,91 @@
+---
+import "./blog-with-slug-path.styled/typography.css";
+import "./blog-with-slug-path.styled/code.css";
+import { CollectionEntry } from "astro:content";
+
+import Layout from "@/pages.src/@shared/layouts/layout.astro";
+import { Link } from "@/pages.src/@shared/components/link";
+import { Code } from "@/pages.src/blog/[...slug]/blog-with-slug-path.styled/code";
+import {
+  Blockquote,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  HR,
+  Li,
+  Ol,
+  Paragraph,
+  Strong,
+  Ul,
+} from "@/pages.src/@shared/components/typography";
+import BlogTitle from "@/pages.src/blog/[...slug]/blog-with-slug-path.sub/blog-title.astro";
+import BlogFooter from "@/pages.src/blog/[...slug]/blog-with-slug-path.sub/blog-footer.astro";
+
+export const MDXComponents = {
+  a: Link,
+  code: Code,
+  blockquote: Blockquote,
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
+  hr: HR,
+  ul: Ul,
+  ol: Ol,
+  li: Li,
+  p: Paragraph,
+  strong: Strong,
+};
+
+interface Props {
+  currentPost: CollectionEntry<"blogs">;
+  prevPost?: CollectionEntry<"blogs">;
+  nextPost?: CollectionEntry<"blogs">;
+}
+
+const { currentPost, prevPost, nextPost } = Astro.props;
+const tags = [...new Set(currentPost.data.tags)].sort();
+const { Content } = await currentPost.render();
+---
+
+<Layout
+  title={`${currentPost.data.title} | Omar Elhawary`}
+  description={currentPost.data.description}
+  keywords={`blog, post, ${tags.join(", ")}`}
+  image={`/images/${currentPost.slug}.png`}
+  type="article"
+  date={currentPost.data.date}
+  lang={currentPost.data.lang}
+>
+  <BlogTitle post={currentPost} />
+  <hr class="h-16 border-0" />
+  <article class="blog-content">
+    <Content components={MDXComponents} class="blog-content" />
+  </article>
+  <hr class="h-4 border-0" />
+  <BlogFooter
+    currentPost={currentPost}
+    prevPost={prevPost}
+    nextPost={nextPost}
+  />
+</Layout>
+
+<script is:inline>
+  document.querySelectorAll(".copy-code").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      navigator.clipboard
+        .writeText(String(event.target.nextSibling?.textContent))
+        .then(() => (event.target.textContent = "Copied!"))
+        .catch(() => (event.target.textContent = "Not supported"));
+    });
+    button.addEventListener(
+      "blur-sm",
+      (event) => (event.target.textContent = "Copy"),
+    );
+  });
+</script>

@@ -1,0 +1,55 @@
+---
+import { CollectionEntry } from "astro:content";
+
+import Layout from "@/pages.src/@shared/layouts/layout.astro";
+import { Link } from "@/pages.src/@shared/components/link";
+import {
+  H1,
+  Paragraph,
+  H2,
+  Li,
+} from "@/pages.src/@shared/components/typography";
+
+interface Props {
+  posts: CollectionEntry<"blogs">[];
+  lang: "en" | "ko";
+}
+const { posts, lang } = Astro.props;
+
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
+---
+
+<Layout
+  title="Blog | Omar Elhawary"
+  description="Writing about web development, tooling, linux and developer productivity"
+  keywords={`uses, tools, web, software, development, environment, ${tags.join(", ")}`}
+  image="/images/cover.png"
+  type="website"
+  lang={lang}
+>
+  <H1>Blog</H1>
+  <Paragraph class="opacity-70"
+    >Writing about web development, tooling, linux and developer productivity</Paragraph
+  >
+  <H2>Posts</H2>
+  <ul>
+    {
+      posts?.map((post) => (
+        <Li class="mt-14 flex flex-col first:mt-4">
+          <Link href={(lang === "ko" ? "/ko" : "") + `/blog/${post.slug}`}>
+            <span class="block text-sm font-medium opacity-60">
+              {post.data.date}
+            </span>
+            <h3 class="mt-2 text-xl font-semibold">{post.data.title}</h3>
+            <p class="mt-2">{post.data.description}</p>
+            <ul class="mt-2 flex flex-wrap gap-x-3 gap-y-1 opacity-60">
+              {post.data.tags.map((tag) => (
+                <li class="text-sm font-light">#{tag}</li>
+              ))}
+            </ul>
+          </Link>
+        </Li>
+      ))
+    }
+  </ul>
+</Layout>

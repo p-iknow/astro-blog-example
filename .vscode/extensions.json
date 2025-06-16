@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "nrwl.angular-console",
+    "esbenp.prettier-vscode",
+    "firsttris.vscode-jest-runner",
+    "karyan40024.gotmpl-syntax-highlighter",
+    "bradlc.vscode-tailwindcss",
+    "Tobermory.es6-string-html"
+  ]
+}

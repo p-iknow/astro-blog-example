@@ -1,0 +1,57 @@
+---
+import { constants } from "@/config/constants";
+import { ToggleThemeIcon } from "@/pages.src/@shared/layouts/layout.sub/base-header.styled";
+import { TOGGLE_THEME_BUTTON_ID } from "./base-header.helper";
+import { Locale } from "@/config/locale";
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+---
+
+<!-- 
+  Theme initialization script to prevent FOUC (Flash of Unstyled Content).
+  In Astro, regular <script> tags run after page load, which can cause theme flicker.
+  Using is:inline directive ensures this script runs immediately during page load,
+  setting the correct theme based on user's preference (localStorage) or system preference.
+
+  References:
+  - Astro Scripts: https://docs.astro.build/en/guides/client-side-scripts/
+  - is:inline directive: https://docs.astro.build/en/guides/client-side-scripts/#script-inline
+  - FOUC: https://en.wikipedia.org/wiki/Flash_of_unstyled_content
+-->
+<script is:inline>
+  (function () {
+    const theme =
+      localStorage.getItem("theme") ||
+      (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("color-scheme", theme);
+  })();
+</script>
+<header>
+  <nav class="flex justify-between">
+    <ul
+      class="flex flex-wrap items-center gap-2 text-base font-medium sm:gap-6"
+    >
+      {
+        constants.links.internal.map(({ name, link }) => (
+          <li>
+            <a href={(lang === "ko" ? "/ko" : "") + link} class="p-2">
+              {name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <button id={TOGGLE_THEME_BUTTON_ID} aria-label="Toggle Theme" class="mx-1">
+      <ToggleThemeIcon />
+    </button>
+  </nav>
+</header>
+<script>
+  import { toggleTheme, TOGGLE_THEME_BUTTON_ID } from "./base-header.helper";
+  document
+    .querySelector(`#${TOGGLE_THEME_BUTTON_ID}`)
+    ?.addEventListener("click", toggleTheme);
+</script>

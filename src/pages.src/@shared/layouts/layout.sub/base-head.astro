@@ -1,0 +1,91 @@
+---
+import { constants } from "@/config/constants";
+import { EnLocale, KoLocale, LOCALE, Locale } from "@/config/locale";
+
+type Props = {
+  title: string;
+  description: string;
+  keywords: string[] | string;
+  image: string;
+  type: string;
+  date?: Date;
+  lang: Locale;
+};
+
+const { profile } = constants;
+const props = Astro.props as Props;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Theme -->
+<meta name="theme-color" content="#fcfcfc" />
+<meta name="color-scheme" content="light dark" />
+<!-- Primary Meta Tags -->
+<title>{props.title}</title>
+<meta name="title" content={props.title} />
+<meta name="description" content={props.description} />
+<meta name="author" content={profile.name} />
+<meta
+  name="keywords"
+  content={Array.isArray(props.keywords)
+    ? props.keywords.join(", ")
+    : props.keywords}
+/>
+{
+  props.date ? (
+    <meta
+      property="article:published_time"
+      content={new Date(props.date).toISOString()}
+    />
+  ) : null
+}
+<!-- SEO / Bot -->
+<link rel="canonical" href={constants.site + Astro.url.pathname} />
+<link
+  rel="alternate"
+  href={constants.site +
+    (Astro.url.pathname.startsWith("/ko")
+      ? Astro.url.pathname.replace("/ko", "")
+      : Astro.url.pathname)}
+  hreflang={EnLocale}
+/>
+<link
+  rel="alternate"
+  href={constants.site +
+    (props.lang === "en" ? "/ko" : "") +
+    Astro.url.pathname}
+  hreflang={KoLocale}
+/>
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+<!-- Open Graph -->
+<meta property="og:locale" content={LOCALE[props.lang]} />
+<meta property="og:site_name" content={profile.name} />
+<meta property="og:title" content={props.title} />
+<meta property="og:description" content={props.description} />
+<meta property="og:image" content={constants.site + props.image} />
+<meta property="og:image:alt" content={props.title} />
+<meta property="og:type" content={props.type} />
+<meta property="og:url" content={constants.site + Astro.url.pathname} />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content={`@${profile.username}`} />
+<meta name="twitter:site" content={`@${profile.username}`} />
+<meta name="twitter:title" content={props.title} />
+<meta name="twitter:description" content={props.description} />
+<meta name="twitter:url" content={constants.site + Astro.url.pathname} />
+<meta name="twitter:image" content={constants.site + props.image} />
+<meta name="twitter:image:alt" content={props.title} />
+<!-- Resources -->
+<link rel="preconnect" href={constants.site} />
+<link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+<link
+  rel="preload"
+  type="font/woff2"
+  href="/fonts/ibm-plex-var.woff2"
+  as="font"
+  crossorigin="anonymous"
+/>

@@ -1,0 +1,86 @@
+---
+import { constants } from "@/config/constants";
+import { EnLocale, Locale } from "@/config/locale";
+import { Link } from "@/pages.src/@shared/components/link";
+import { Li } from "@/pages.src/@shared/components/typography";
+import { Email } from "@/pages.src/@shared/icons/email";
+import { GitHub } from "@/pages.src/@shared/icons/github";
+import { Twitter } from "@/pages.src/@shared/icons/twitter";
+import Layout from "@/pages.src/@shared/layouts/layout.astro";
+import { CollectionEntry } from "astro:content";
+
+interface Props {
+  posts: CollectionEntry<"blogs">[];
+  lang?: Locale;
+}
+const { posts, lang = EnLocale } = Astro.props;
+const langPath = lang === EnLocale ? "" : `/${lang}`;
+---
+
+<Layout
+  title="Omar Elhawary | Software Engineer"
+  description="Software engineer and linux enthusiast interested in user/dev experience, design systems, statically typed languages and functional programming"
+  keywords="personal, website, blog"
+  image="/images/cover.png"
+  type="website"
+  lang={lang}
+>
+  <h1 class="mb-10 text-4xl font-bold">Hi, I’m Omar!</h1>
+  <section class="mt-14 space-y-2">
+    <h2 class="text-xl leading-loose font-normal sm:leading-loose">
+      I’m a software engineer and linux enthusiast interested in user/dev
+      experience, software architecture, design systems and functional
+      programming.
+    </h2>
+
+    <h3 class="text-xl leading-loose font-normal sm:leading-loose">
+      I <Link href={constants.site + "/blog"}>blog</Link> about web development,
+      tooling, linux and developer productivity.
+    </h3>
+  </section>
+  <section class="mt-12 space-x-2">
+    <Link
+      href={constants.profile.links.email}
+      classList={{ ["text-default"]: true }}
+      aria-label="Email"
+    >
+      <Email />
+    </Link>
+    <Link
+      href={constants.profile.links.github}
+      classList={{ ["text-default"]: true }}
+      aria-label="GitHub"
+    >
+      <GitHub />
+    </Link>
+    <Link
+      href={constants.profile.links.twitter}
+      classList={{ ["text-default"]: true }}
+      aria-label="Twitter"
+    >
+      <Twitter />
+    </Link>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="mt-28 text-2xl font-bold">Recent posts</h2>
+    <ul class="mt-12">
+      {
+        posts.slice(0, 3).map((post) => (
+          <Li class="mt-10 flex flex-col">
+            <Link href={langPath + `/blog/${post.slug}`}>
+              <span class="block text-sm font-medium opacity-60">
+                {post.data.date}
+              </span>
+              <h3 class="mt-2 text-lg font-semibold">{post.data.title}</h3>
+              <p class="mt-2">{post.data.description}</p>
+            </Link>
+          </Li>
+        ))
+      }
+    </ul>
+    <Link href="/blog" class="mt-10 inline-block text-sm font-medium">
+      View all posts <span class="ml-2">→</span>
+    </Link>
+  </section>
+</Layout>

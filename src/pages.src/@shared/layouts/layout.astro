@@ -1,0 +1,54 @@
+---
+import "@/styles/colors.css";
+import "@/styles/global.css";
+
+import BaseHead from "@/pages.src/@shared/layouts/layout.sub/base-head.astro";
+import BaseHeader from "@/pages.src/@shared/layouts/layout.sub/base-header.astro";
+import BaseFooter from "@/pages.src/@shared/layouts/layout.sub/base-footer.astro";
+import { Locale } from "@/config/locale";
+
+interface Props {
+  title: string;
+  description: string;
+  keywords: string;
+  image: string;
+  type: string;
+  date?: Date;
+  lang: Locale;
+}
+
+const props = Astro.props;
+---
+
+<html lang={props.lang} color-scheme="auto" dir="ltr">
+  <head>
+    <BaseHead
+      title={props.title}
+      description={props.description}
+      keywords={props.keywords}
+      image={props.image}
+      type={props.type}
+      date={props.date}
+      lang={props.lang}
+    />
+  </head>
+  <body
+    class="bg-surface text-default selection:bg-default selection:text-surface overflow-y-scroll"
+  >
+    <section
+      class="container mx-auto flex min-h-screen max-w-4xl flex-col px-3 py-10 lg:px-16"
+    >
+      <BaseHeader lang={props.lang} />
+      <main class="min-h-xs flex-1 px-2 py-14 sm:py-20">
+        <slot />
+      </main>
+      <BaseFooter />
+    </section>
+    <script is:inline>
+      // Register service worker
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js");
+      }
+    </script>
+  </body>
+</html>

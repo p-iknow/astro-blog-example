@@ -1,0 +1,292 @@
+---
+title: "한글 가이드로 테스트하기"
+description: "한글 가이드로 테스트하기"
+tags: [typescript]
+date: "2025-05-25"
+lang: "ko"
+---
+
+Astro에서 마크다운 콘텐츠를 작성할 때 사용할 수 있는 기본 마크다운 문법 예시입니다.
+
+## 제목 (Headings)
+
+다음 HTML `<h2>`—`<h6>` 요소들은 5단계의 섹션 제목을 나타냅니다. blog 내에서 `<h2>`이 가장 높은 섹션 레벨이고 `<h6>`이 가장 낮은 레벨입니다.
+h1은 blog 제목에 들어가기 때문에 배제했습니다.
+
+## H2
+
+### H3
+
+#### H4
+
+##### H5
+
+###### H6
+
+## 단락 (Paragraph)
+
+Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut
+dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna
+tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem
+aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos
+nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores
+editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
+
+Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que
+aut hariosam ex eat.
+
+## 이미지 (Images)
+
+### 문법 (Syntax)
+
+```markdown
+![대체 텍스트](./full/or/relative/path/of/image)
+```
+
+### 출력 (Output)
+
+![blog placeholder](/images/logo.png)
+
+## 인용구 (Blockquotes)
+
+인용구 요소는 다른 출처에서 인용된 콘텐츠를 나타내며, 선택적으로 `footer` 또는 `cite` 요소 내에 인용 출처를 포함할 수 있습니다. 또한 주석이나 약어와 같은 인라인 변경사항도 포함할 수 있습니다.
+
+### 출처 없는 인용구
+
+#### 문법
+
+```markdown
+> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
+> **참고**: 인용구 내에서 *마크다운 문법*을 사용할 수 있습니다.
+```
+
+#### 출력
+
+> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
+> **참고**: 인용구 내에서 *마크다운 문법*을 사용할 수 있습니다.
+
+### 출처가 있는 인용구
+
+#### 문법
+
+```markdown
+> 메모리를 공유하는 방식으로 소통하지 말고, 소통하는 방식으로 메모리를 공유하라.<br>
+> — <cite>Rob Pike[^1]</cite>
+```
+
+#### 출력
+
+> 메모리를 공유하는 방식으로 소통하지 말고, 소통하는 방식으로 메모리를 공유하라.<br>
+> — <cite>Rob Pike[^1]</cite>
+
+[^1]: 위 인용구는 2015년 11월 18일 Gopherfest에서 Rob Pike의 [강연](https://www.youtube.com/watch?v=PAAkCSZUG1c)에서 발췌했습니다.
+
+## 알림 (Callouts)
+
+### 참고 (Note)
+
+#### 문법
+
+```markdown
+> [!NOTE] 참고
+> 내용
+```
+
+#### 출력
+
+> [!NOTE] 참고
+> 내용
+
+### 팁 (Tip)
+
+#### 문법
+
+```markdown
+> [!TIP] 팁
+> 내용
+```
+
+#### 출력
+
+> [!TIP] 팁
+> 내용
+
+### 중요 (Important)
+
+#### 문법
+
+```markdown
+> [!IMPORTANT] 중요
+> 내용
+```
+
+#### 출력
+
+> [!IMPORTANT] 중요
+> 내용
+
+### 경고 (Warning)
+
+#### 문법
+
+```markdown
+> [!WARNING] 경고
+> 내용
+```
+
+#### 출력
+
+> [!WARNING] 경고
+> 내용
+
+### 주의 (Caution)
+
+#### 문법
+
+```markdown
+> [!CAUTION] 주의
+> 내용
+```
+
+#### 출력
+
+> [!CAUTION] 주의
+> 내용
+
+## 표 (Tables)
+
+### 문법
+
+```markdown
+| 이탤릭체   | 굵게     | 코드   |
+| ---------- | -------- | ------ |
+| _이탤릭체_ | **굵게** | `코드` |
+```
+
+### 출력
+
+| 이탤릭체   | 굵게     | 코드   |
+| ---------- | -------- | ------ |
+| _이탤릭체_ | **굵게** | `코드` |
+
+## 코드 블록 (Code Blocks)
+
+### 문법
+
+새 줄에 3개의 백틱 ```을 사용하고 코드를 작성한 후, 새 줄에 3개의 백틱으로 닫습니다. 특정 언어의 구문을 강조하려면 첫 번째 3개의 백틱 뒤에 언어 이름을 한 단어로 작성합니다. 예: html, javascript, css, markdown, typescript, txt, bash
+
+````markdown
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Example HTML5 Document</title>
+  </head>
+  <body>
+    <p>Test</p>
+  </body>
+</html>
+```
+````
+
+### 출력
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Example HTML5 Document</title>
+  </head>
+  <body>
+    <p>Test</p>
+  </body>
+</html>
+```
+
+## 목록 유형 (List Types)
+
+### 순서 있는 목록 (Ordered List)
+
+#### 문법
+
+```markdown
+1. 첫 번째 항목
+2. 두 번째 항목
+3. 세 번째 항목
+```
+
+#### 출력
+
+1. 첫 번째 항목
+2. 두 번째 항목
+3. 세 번째 항목
+
+### 순서 없는 목록 (Unordered List)
+
+#### 문법
+
+```markdown
+- 목록 항목
+- 다른 항목
+- 또 다른 항목
+```
+
+#### 출력
+
+- 목록 항목
+- 다른 항목
+- 또 다른 항목
+
+### 중첩 목록 (Nested list)
+
+#### 문법
+
+```markdown
+- 과일
+  - 사과
+  - 오렌지
+  - 바나나
+- 유제품
+  - 우유
+  - 치즈
+```
+
+#### 출력
+
+- 과일
+  - 사과
+  - 오렌지
+  - 바나나
+- 유제품
+  - 우유
+  - 치즈
+
+## 기타 요소 — abbr, sub, sup, kbd, mark
+
+### 문법
+
+```markdown
+<abbr title="Graphics Interchange Format">GIF</abbr>는 비트맵 이미지 형식입니다.
+
+H<sub>2</sub>O
+
+X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
+
+세션을 종료하려면 <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd>를 누르세요.
+
+대부분의 <mark>도롱뇽</mark>은 야행성이며, 곤충, 벌레 및 기타 작은 생물을 사냥합니다.
+```
+
+### 출력
+
+<abbr title="Graphics Interchange Format">GIF</abbr>는 비트맵 이미지 형식입니다.
+
+H<sub>2</sub>O
+
+X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
+
+세션을 종료하려면 <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd>를 누르세요.
+
+대부분의 <mark>도롱뇽</mark>은 야행성이며, 곤충, 벌레 및 기타 작은 생물을 사냥합니다.

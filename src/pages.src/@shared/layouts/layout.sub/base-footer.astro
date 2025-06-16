@@ -1,0 +1,20 @@
+---
+import { constants } from "@/config/constants";
+---
+
+<footer
+  class="flex flex-col-reverse items-center justify-between gap-8 p-2 text-sm md:flex-row md:gap-32"
+>
+  <span class="text-default opacity-70">&copy; 2025 p-iknow</span>
+  <nav>
+    <ul class="flex flex-wrap justify-center gap-4 sm:gap-8">
+      {
+        constants.links.external.map(({ name, link }) => (
+          <li>
+            <a href={link}>{name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</footer>

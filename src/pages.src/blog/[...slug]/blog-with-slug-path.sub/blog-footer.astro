@@ -1,0 +1,60 @@
+---
+import { constants } from "@/config";
+import { Link } from "@/pages.src/@shared/components/link";
+import { CollectionEntry } from "astro:content";
+
+interface Props {
+  currentPost: CollectionEntry<"blogs">;
+  prevPost?: CollectionEntry<"blogs">;
+  nextPost?: CollectionEntry<"blogs">;
+}
+
+const { currentPost, prevPost, nextPost } = Astro.props;
+const lang = currentPost.data.lang;
+---
+
+<section class="my-8 text-sm">
+  <div class="my-8 flex justify-center gap-4 sm:justify-end sm:gap-6">
+    <Link
+      href={`https://twitter.com/intent/tweet` +
+        `?text=${currentPost.data.title} — ${currentPost.data.description}` +
+        `&url=${constants.site}/${lang}/blog/${currentPost.slug}` +
+        `&via=oedotme` +
+        `&hashtags=${currentPost.data.tags.join(",")}`}
+    >
+      Share on Twitter
+    </Link>
+
+    <Link
+      href={`https://twitter.com/search?q=${constants.site}/${lang}/blog/${currentPost.slug}&src=typed_query`}
+    >
+      Discuss on Twitter
+    </Link>
+  </div>
+
+  <div class="my-4 flex gap-8 text-sm">
+    {
+      prevPost ? (
+        <Link
+          class="mr-auto flex w-1/2 truncate rounded-xs py-2 text-left font-medium"
+          href={`/${lang}/blog/${prevPost.slug}`}
+        >
+          <span class="mr-2">←</span>
+          <span class="flex-1 truncate">{prevPost.data.title}</span>
+        </Link>
+      ) : null
+    }
+
+    {
+      nextPost ? (
+        <Link
+          class="ml-auto flex w-1/2 truncate rounded-xs py-2 text-right font-medium"
+          href={`/${lang}/blog/${nextPost.slug}`}
+        >
+          <span class="flex-1 truncate">{nextPost.data.title}</span>
+          <span class="ml-2">→</span>
+        </Link>
+      ) : null
+    }
+  </div>
+</section>

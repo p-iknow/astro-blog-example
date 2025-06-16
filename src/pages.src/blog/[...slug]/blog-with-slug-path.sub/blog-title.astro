@@ -1,0 +1,28 @@
+---
+import { Link } from "@/pages.src/@shared/components/link";
+import { H1 } from "../../../@shared/components/typography";
+import { CollectionEntry } from "astro:content";
+interface Props {
+  post: CollectionEntry<"blogs">;
+}
+
+const { post } = Astro.props;
+const { title, description, author, date, lang } = post.data;
+---
+
+<div>
+  <H1>{title}</H1>
+  <p class="">{description}</p>
+  <div class="mt-5 text-sm">
+    {
+      author ? (
+        <>
+          <span class="opacity-70">Cowritten with</span>{" "}
+          <Link href="https://marianmolina.com"> Marian Molina</Link>
+          <span class="mx-1"> — </span>
+        </>
+      ) : null
+    }
+    <span class="opacity-70">{date}</span>
+  </div>
+</div>

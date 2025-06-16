@@ -1,0 +1,32 @@
+---
+import { EnLocale } from "@/config/locale";
+import { getAllBlogs } from "@/content/content-collections";
+import BlogWithSlugPathPage from "@/pages.src/blog/[...slug]/blog-with-slug-path-page.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getAllBlogs({ lang: EnLocale });
+  const paths = posts.map((page) => {
+    const [slug] = page.id.split(".");
+    return { params: { slug }, props: page };
+  });
+
+  return paths;
+}
+
+const currentPost = Astro.props;
+
+const postsForNavigation = (await getCollection("blogs")).sort(
+  (a, z) => +new Date(z.data.date) - +new Date(a.data.date),
+);
+
+const index = postsForNavigation.findIndex(({ id }) => id === currentPost.id);
+const prev = postsForNavigation?.[index + 1];
+const next = postsForNavigation?.[index - 1];
+---
+
+<BlogWithSlugPathPage
+  currentPost={currentPost}
+  prevPost={prev}
+  nextPost={next}
+/>

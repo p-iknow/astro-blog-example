@@ -1,0 +1,64 @@
+{
+  "eslint.validate": ["json"],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    /**
+     * 프로젝트 안쪽의 자원은 relative 하게 auto import 시켜 circular dependecy를 막습니다
+     * 외부 라이브러리의 경우 path alias를 사용한 절대경로로 import 시켜줍니다
+     */
+    "typescript.preferences.importModuleSpecifier": "project-relative"
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    /**
+     * 프로젝트 안쪽의 자원은 relative 하게 auto import 시켜 circular dependecy를 막습니다
+     * 외부 라이브러리의 경우 path alias를 사용한 절대경로로 import 시켜줍니다
+     */
+    "typescript.preferences.importModuleSpecifier": "project-relative"
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(((?:[^()]|\\([^()]*\\))*)\\)", "[\"'`]?([^\"'`]+)[\"'`]?"],
+    ["cn\\(((?:[^()]|\\([^()]*\\))*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "[yml][yaml][github-actions-workflow]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced"
+  }
+}

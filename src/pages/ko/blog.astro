@@ -1,9 +1,9 @@
 ---
-import { EnLocale } from "@/config/locale";
 import { getAllBlogs } from "@/content/content-collections";
 import BlogIndexPage from "@/pages.src/blog/_index/blog-index-page.astro";
+import { KoLocale } from "@/config/locale";
 
-const posts = await getAllBlogs({ lang: EnLocale });
+const posts = await getAllBlogs({ lang: KoLocale });
 ---
 
-<BlogIndexPage posts={posts} lang={EnLocale} />
+<BlogIndexPage posts={posts} lang={KoLocale} />

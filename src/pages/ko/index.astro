@@ -1,0 +1,9 @@
+---
+import IndexPage from "@/pages.src/index-page.astro";
+import { getAllBlogs } from "@/content/content-collections";
+import { KoLocale } from "@/config/locale";
+
+const posts = await getAllBlogs({ lang: KoLocale });
+---
+
+<IndexPage posts={posts} lang={KoLocale} />;
