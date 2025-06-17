@@ -60,6 +60,11 @@
   @apply border-surface my-5;
 }
 
+/* Expressive Code Block */
+.blog-content div.expressive-code {
+  @apply mb-5;
+}
+
 /* Tables */
 .blog-content table {
   @apply my-6 flex w-full flex-col;

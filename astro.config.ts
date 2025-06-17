@@ -28,7 +28,7 @@ export default defineConfig({
   prefetch: { prefetchAll: true },
   integrations: [
     astroExpressiveCode({
-      themes: ["light-plus", "dracula-soft"],
+      themes: ["catppuccin-latte", "dracula-soft"],
       useDarkModeMediaQuery: true,
       themeCssRoot: "html",
       themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
