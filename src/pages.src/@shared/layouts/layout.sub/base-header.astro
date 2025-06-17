@@ -27,6 +27,7 @@ const { lang } = Astro.props;
       localStorage.getItem("theme") ||
       (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     document.documentElement.setAttribute("color-scheme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
   })();
 </script>
 <header>

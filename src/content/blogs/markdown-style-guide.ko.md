@@ -1,5 +1,5 @@
 ---
-title: "한글 가이드로 테스트하기"
+title: "마크다운 한글 스타일 가이드"
 description: "한글 가이드로 테스트하기"
 tags: [typescript]
 date: "2025-05-25"
@@ -74,78 +74,6 @@ h1은 blog 제목에 들어가기 때문에 배제했습니다.
 > — <cite>Rob Pike[^1]</cite>
 
 [^1]: 위 인용구는 2015년 11월 18일 Gopherfest에서 Rob Pike의 [강연](https://www.youtube.com/watch?v=PAAkCSZUG1c)에서 발췌했습니다.
-
-## 알림 (Callouts)
-
-### 참고 (Note)
-
-#### 문법
-
-```markdown
-> [!NOTE] 참고
-> 내용
-```
-
-#### 출력
-
-> [!NOTE] 참고
-> 내용
-
-### 팁 (Tip)
-
-#### 문법
-
-```markdown
-> [!TIP] 팁
-> 내용
-```
-
-#### 출력
-
-> [!TIP] 팁
-> 내용
-
-### 중요 (Important)
-
-#### 문법
-
-```markdown
-> [!IMPORTANT] 중요
-> 내용
-```
-
-#### 출력
-
-> [!IMPORTANT] 중요
-> 내용
-
-### 경고 (Warning)
-
-#### 문법
-
-```markdown
-> [!WARNING] 경고
-> 내용
-```
-
-#### 출력
-
-> [!WARNING] 경고
-> 내용
-
-### 주의 (Caution)
-
-#### 문법
-
-```markdown
-> [!CAUTION] 주의
-> 내용
-```
-
-#### 출력
-
-> [!CAUTION] 주의
-> 내용
 
 ## 표 (Tables)
 

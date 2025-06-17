@@ -84,78 +84,6 @@ within a `footer` or `cite` element, and optionally with in-line changes such as
     The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during
     Gopherfest, November 18, 2015.
 
-## Callouts
-
-### Note
-
-#### Syntax
-
-```markdown
-> [!NOTE] Note
-> Content
-```
-
-#### Output
-
-> [!NOTE] Note
-> Content
-
-### Tip
-
-#### Syntax
-
-```markdown
-> [!TIP] Tip
-> Content
-```
-
-#### Output
-
-> [!TIP] Tip
-> Content
-
-### Important
-
-#### Syntax
-
-```markdown
-> [!IMPORTANT] Important
-> Content
-```
-
-#### Output
-
-> [!IMPORTANT] Important
-> Content
-
-### Warning
-
-#### Syntax
-
-```markdown
-> [!WARNING] Warning
-> Content
-```
-
-#### Output
-
-> [!WARNING] Warning
-> Content
-
-### Caution
-
-#### Syntax
-
-```markdown
-> [!CAUTION] Caution
-> Content
-```
-
-#### Output
-
-> [!CAUTION] Caution
-> Content
-
 ## Tables
 
 ### Syntax
@@ -195,7 +123,7 @@ markdown, typescript, txt, bash
 ```
 ````
 
-Output
+### Output
 
 ```html
 <!doctype html>
