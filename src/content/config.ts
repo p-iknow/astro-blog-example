@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { LOCALES } from "../config/locale";
+
 export const blogSchema = z.object({
   title: z.string(),
   description: z.string(),
