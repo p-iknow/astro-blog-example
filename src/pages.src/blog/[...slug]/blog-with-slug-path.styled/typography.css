@@ -2,26 +2,44 @@
 
 .blog-content h1 {
   @apply mt-0 mb-4 text-4xl leading-tight font-bold;
+  & code:not(.expressive-code code) {
+    @apply text-3xl;
+  }
 }
 
 .blog-content h2 {
   @apply bg-surface sticky top-0 z-20 mt-10 py-5 text-3xl leading-none font-bold;
+  & code:not(.expressive-code code) {
+    @apply text-2xl;
+  }
 }
 
 .blog-content h3 {
   @apply mt-10 mb-4 text-2xl font-bold;
+  & code:not(.expressive-code code) {
+    @apply text-xl;
+  }
 }
 
 .blog-content h4 {
   @apply mt-10 mb-4 text-xl font-bold;
+  & code:not(.expressive-code code) {
+    @apply text-lg;
+  }
 }
 
 .blog-content h5 {
   @apply mt-8 mb-2 text-lg font-bold;
+  & code:not(.expressive-code code) {
+    @apply text-base;
+  }
 }
 
 .blog-content h6 {
   @apply mt-6 mb-2 text-base font-bold;
+  & code:not(.expressive-code code) {
+    @apply text-sm;
+  }
 }
 
 .blog-content strong {
@@ -37,7 +55,7 @@
 }
 
 .blog-content ul > li > ul {
-  @apply ml-4;
+  @apply mt-1 ml-4;
 }
 
 .blog-content ol {
@@ -45,11 +63,14 @@
 }
 
 .blog-content li {
-  @apply marker:text-default text-base;
+  @apply marker:text-default mb-1;
 }
 
 .blog-content p {
-  @apply mb-5 text-lg leading-[1.75];
+  @apply mb-5 leading-[1.75];
+  & code:not(.expressive-code code) {
+    @apply text-sm;
+  }
 }
 
 .blog-content p + p {
@@ -58,6 +79,14 @@
 
 .blog-content hr {
   @apply border-surface my-5;
+}
+
+/* Inline Code - exclude code blocks */
+.blog-content code:not(.expressive-code code) {
+  padding: 0.1em 0.25em;
+  margin: 0 0.1em;
+  border-radius: 0.25em;
+  @apply bg-gray-200/70 dark:bg-gray-600/70;
 }
 
 /* Expressive Code Block */
@@ -87,17 +116,13 @@
   @apply bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-300;
 }
 
-.blog-content tr:hover td {
-  @apply bg-gray-50 dark:bg-gray-800;
-}
-
 /* Callouts */
 
 .blog-content [data-callout] {
   @apply my-6 space-y-2 rounded-lg p-4 pb-5 text-gray-800 dark:text-gray-300;
 
   & [data-callout-title] {
-    @apply mb-2 flex text-base font-bold;
+    @apply mb-2 flex font-bold;
 
     &::before {
       @apply mr-2 block h-5 w-5 flex-shrink-0 bg-current content-[""];
