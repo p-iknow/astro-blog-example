@@ -1,6 +1,5 @@
 ---
 import "./blog-with-slug-path.styled/typography.css";
-import "./blog-with-slug-path.styled/code.css";
 import { CollectionEntry } from "astro:content";
 
 import Layout from "@/pages.src/@shared/layouts/layout.astro";
@@ -63,7 +62,6 @@ const { Content } = await currentPost.render();
   lang={currentPost.data.lang}
 >
   <BlogTitle post={currentPost} />
-  <hr class="h-16 border-0" />
   <article class="blog-content">
     <Content components={MDXComponents} class="blog-content" />
   </article>

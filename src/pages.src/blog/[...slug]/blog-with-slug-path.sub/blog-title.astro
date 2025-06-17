@@ -2,6 +2,7 @@
 import { Link } from "@/pages.src/@shared/components/link";
 import { H1 } from "../../../@shared/components/typography";
 import { CollectionEntry } from "astro:content";
+import { formatDate } from "date-fns/format";
 interface Props {
   post: CollectionEntry<"blogs">;
 }
@@ -12,7 +13,6 @@ const { title, description, author, date, lang } = post.data;
 
 <div>
   <H1>{title}</H1>
-  <p class="">{description}</p>
   <div class="mt-5 text-sm">
     {
       author ? (
@@ -23,6 +23,6 @@ const { title, description, author, date, lang } = post.data;
         </>
       ) : null
     }
-    <span class="opacity-70">{date}</span>
+    <span class="opacity-70">{formatDate(date, "yyyy-MM-dd")}</span>
   </div>
 </div>

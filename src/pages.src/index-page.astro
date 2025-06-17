@@ -8,6 +8,7 @@ import { GitHub } from "@/pages.src/@shared/icons/github";
 import { Twitter } from "@/pages.src/@shared/icons/twitter";
 import Layout from "@/pages.src/@shared/layouts/layout.astro";
 import { CollectionEntry } from "astro:content";
+import { formatDate } from "date-fns/format";
 
 interface Props {
   posts: CollectionEntry<"blogs">[];
@@ -70,7 +71,7 @@ const langPath = lang === EnLocale ? "" : `/${lang}`;
           <Li class="mt-10 flex flex-col">
             <Link href={langPath + `/blog/${post.slug}`}>
               <span class="block text-sm font-medium opacity-60">
-                {post.data.date}
+                {formatDate(post.data.date, "yyyy-MM-dd, HH:mm")}
               </span>
               <h3 class="mt-2 text-lg font-semibold">{post.data.title}</h3>
               <p class="mt-2">{post.data.description}</p>
